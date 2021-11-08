@@ -10,3 +10,15 @@ services:
       - ./opt:/root/opt
     ports: 
       - 8000:8000
+  mysql:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: channels_tuto
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            TZ: Asia/Tokyo
+        ports:
+            - 3306:3306
+        volumes:
+            - ./.docker/mysql/data:/var/lib/mysql
